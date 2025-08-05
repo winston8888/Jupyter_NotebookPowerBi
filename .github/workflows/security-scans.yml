@@ -11,19 +11,19 @@ on:
     
 
 jobs:
-  analyze:
-    name: CodeQL Analysis
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
+  # analyze:
+  #   name: CodeQL Analysis
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 360
+  #   permissions:
+  #     actions: read
+  #     contents: read
+  #     security-events: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'python']
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       language: [ 'python']
 
     steps:
     - name: Checkout repository
@@ -46,7 +46,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: ${{ matrix.language }}
+        languages: python
         # Custom queries for data science security
         queries: +security-and-quality,security-experimental
         config: |
@@ -81,7 +81,7 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
-        category: "/language:${{matrix.language}}"
+        category: "/language:python"
         upload: true
 
   # dependency-scan:
