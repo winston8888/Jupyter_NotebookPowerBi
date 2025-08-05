@@ -25,5 +25,7 @@ jobs:
           
        - name: Scan repo
          uses: ./.github/workflows/security-scans.yml
+         with:
+            python-version: '3.13' 
 
 
