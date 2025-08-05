@@ -4,7 +4,7 @@ name: "Security Scan"
 on:
   workflow_call: 
     inputs:  
-        python-version:
+      python-version:
         required: false
         type: string
         default: '3.13'
